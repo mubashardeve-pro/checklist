@@ -254,39 +254,24 @@
     return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
   }
 
+  function trimWhatsAppText(text, maxLength = 1500) {
+    if (text.length <= maxLength) return text;
+    return `${text.slice(0, maxLength)}\n...(PDF attach karein for full checklist)`;
+  }
+
   function openWhatsApp(phone, text) {
-    const encodedText = encodeURIComponent(text);
-    const appUrl = `whatsapp://send?phone=${phone}&text=${encodedText}`;
+    const safeText = trimWhatsAppText(text);
+    const encodedText = encodeURIComponent(safeText);
     const webUrl = `https://web.whatsapp.com/send?phone=${phone}&text=${encodedText}`;
     const waMeUrl = `https://wa.me/${phone}?text=${encodedText}`;
 
     if (!isMobileDevice()) {
-      window.open(webUrl, '_blank');
+      openExternalLink(webUrl, true);
       return;
     }
 
-    let fallbackTimer;
-    const cancelFallback = () => {
-      if (fallbackTimer) clearTimeout(fallbackTimer);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-      window.removeEventListener('pagehide', cancelFallback);
-      window.removeEventListener('blur', cancelFallback);
-    };
-
-    const onVisibilityChange = () => {
-      if (document.hidden) cancelFallback();
-    };
-
-    document.addEventListener('visibilitychange', onVisibilityChange);
-    window.addEventListener('pagehide', cancelFallback);
-    window.addEventListener('blur', cancelFallback);
-
-    fallbackTimer = setTimeout(() => {
-      cancelFallback();
-      window.location.href = waMeUrl;
-    }, 2000);
-
-    window.location.href = appUrl;
+    // wa.me via anchor click is more reliable than whatsapp:// on live HTTPS sites.
+    openExternalLink(waMeUrl);
   }
 
   async function generatePDF() {
@@ -386,8 +371,8 @@
 
     clearPhoneError();
     const messageText = buildShareTemplate().text;
-    closeWhatsAppModal();
     openWhatsApp(result.phone, messageText);
+    closeWhatsAppModal();
     showToast('Opening WhatsApp...');
   });
 
