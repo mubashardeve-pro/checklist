@@ -214,28 +214,40 @@
     clearPhoneError();
   }
 
+  function openExternalLink(url, newTab = false) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.style.display = 'none';
+    if (newTab) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   function openEmailApp(text, country) {
     const subject = `Documents Checklist - ${country} - Edify Group`;
     let body = text;
 
-    if (body.length > 1000) {
-      body = `${body.slice(0, 1000)}\n...`;
+    // Keep mailto URLs short enough for mobile mail clients (≈2k limit).
+    if (body.length > 800) {
+      body = `${body.slice(0, 800)}\n...(PDF attach karein for full checklist)`;
     }
 
     const encodedSubject = encodeURIComponent(subject);
     const encodedBody = encodeURIComponent(body);
     const mailtoUrl = `mailto:info@edify.pk?subject=${encodedSubject}&body=${encodedBody}`;
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodedSubject}&body=${encodedBody}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@edify.pk&su=${encodedSubject}&body=${encodedBody}`;
 
     if (isMobileDevice()) {
-      window.location.href = mailtoUrl;
+      openExternalLink(mailtoUrl);
       return;
     }
 
-    const emailWindow = window.open(gmailUrl, '_blank');
-    if (!emailWindow) {
-      window.location.href = mailtoUrl;
-    }
+    // Anchor click avoids popup blockers that break window.open() on live sites.
+    openExternalLink(gmailUrl, true);
   }
 
   function isMobileDevice() {
