@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents Checklist – Edify Group</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Action bar (hidden in PDF) -->
+    <div class="action-bar no-print">
+      <button type="button" id="btnDownload" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </button>
+      <button type="button" id="btnWhatsApp" class="btn btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Share on WhatsApp
+      </button>
+      <button type="button" id="btnEmail" class="btn btn-email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Share via Email
+      </button>
+    </div>
+
+    <!-- Printable form -->
+    <form id="checklistForm" class="checklist-form">
+      <div id="pdfContent" class="pdf-content">
+
+        <!-- Header -->
+        <header class="form-header">
+          <div class="header-top">
+            <div class="logo-section">
+              <div class="logo-mark">E</div>
+              <div class="logo-text">
+                <span class="logo-edify">EDIFY</span>
+                <span class="logo-sub">Group of Companies</span>
+              </div>
+            </div>
+            <div class="qr-section">
+              <div class="qr-placeholder">
+                <span>QR</span>
+              </div>
+              <span class="qr-label">Scan to Visit</span>
+            </div>
+          </div>
+
+          <div class="offices-row">
+            <div class="office">
+              <strong>Head Office (Faisalabad)</strong>
+              <p>Edify Building, 3rd Floor, S1-S2 Susan Road, Madina Town.</p>
+              <p>Ph: +92 41 850 18 93 - 94</p>
+            </div>
+            <div class="office">
+              <strong>Lahore (DHA Office)</strong>
+              <p>1st Floor, Plaza Y-213, DHA Phase 3, Near ChenOne.</p>
+              <p>Ph: +92 42 3574 7733</p>
+            </div>
+            <div class="office">
+              <strong>Lahore (Johar Town Office)</strong>
+              <p>2nd Floor, Plot 391 J-III, Commercial Plaza, Nazria-e-Pakistan Avenue.</p>
+              <p>Ph: +92 304 1111 44</p>
+            </div>
+            <div class="office">
+              <strong>Multan Office</strong>
+              <p>Twin Tower 10-A, Tehsil Chowk Near Masoom's Cafe Gulgasht, Bosan Road.</p>
+              <p>Ph: +92 61 621 0066</p>
+            </div>
+            <div class="office">
+              <strong>Islamabad/Rawalpindi Office</strong>
+              <p>Office No F1, 1st Floor, Interlace Plaza, Markaz, I-8.</p>
+              <p>Ph: +92 51 612 7415</p>
+            </div>
+            <div class="office">
+              <strong>Peshawar Office</strong>
+              <p>Office Number 6, 2nd Floor, Al-Haj Tower, University Road, Jahangir Abad.</p>
+              <p>Ph: +92 91 260 1000</p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Title + Country -->
+        <div class="title-row">
+          <div class="title-banner">DOCUMENTS CHECKLIST</div>
+          <div class="country-field">
+            <label for="country">COUNTRY</label>
+            <div class="country-input-wrap">
+              <select id="country" name="country">
+                <option value="">Select Country</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Australia">Australia</option>
+                <option value="Canada">Canada</option>
+                <option value="United States">United States</option>
+                <option value="Germany">Germany</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Turkey">Turkey</option>
+                <option value="China">China</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Ireland">Ireland</option>
+              </select>
+              <span id="countryPdfValue" class="country-pdf-value" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIO DOCUMENTS -->
+        <section class="form-section">
+          <div class="section-banner">BIO DOCUMENTS</div>
+          <div class="checkbox-grid cols-5">
+            <label class="check-item"><input type="checkbox" name="bio" value="PASSPORT SCAN" /><span>PASSPORT SCAN</span></label>
+            <label class="check-item"><input type="checkbox" name="bio" value="CNIC SCAN" /><span>CNIC SCAN</span></label>
+            <label class="check-item"><input type="checkbox" name="bio" value="BIRTH CERTIFICATE" /><span>BIRTH CERTIFICATE</span></label>
+            <label class="check-item"><input type="checkbox" name="bio" value="FRC" /><span>FRC</span></label>
+            <label class="check-item"><input type="checkbox" name="bio" value="MARRIAGE CERTIFICATE" /><span>MARRIAGE CERTIFICATE</span></label>
+          </div>
+        </section>
+
+        <!-- EDUCATIONAL DOCUMENTS -->
+        <section class="form-section">
+          <div class="section-banner">EDUCATIONAL DOCUMENTS</div>
+          <div class="checkbox-grid cols-5">
+            <label class="check-item"><input type="checkbox" name="edu" value="SSC/HSSC (T/D)" /><span>SSC/HSSC (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="O LEVELS (T/D)" /><span>O LEVELS (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="A LEVELS (T/D)" /><span>A LEVELS (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="A/AS LEVEL" /><span>A/AS LEVEL</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="HND (T/D)" /><span>HND (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="BACHELORS/ADP (T/D)" /><span>BACHELORS/ADP (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="MASTERS (T/D)" /><span>MASTERS (T/D)</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="CERTIFICATE" /><span>CERTIFICATE</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="GAP EVIDENCE" /><span>GAP EVIDENCE</span></label>
+            <label class="check-item"><input type="checkbox" name="edu" value="IB/DP (T/D)" /><span>IB/DP (T/D)</span></label>
+          </div>
+        </section>
+
+        <!-- ENGLISH LANGUAGE REQUIREMENTS -->
+        <section class="form-section">
+          <div class="section-banner">ENGLISH LANGUAGE REQUIREMENTS</div>
+          <div class="checkbox-grid cols-5">
+            <label class="check-item"><input type="checkbox" name="english" value="IELTS" /><span>IELTS</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="ENGLISH PROFICIENCY" /><span>ENGLISH PROFICIENCY</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="MEDIUM COMMUNICATION" /><span>MEDIUM COMMUNICATION</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="PTE" /><span>PTE</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="Duolingo" /><span>Duolingo</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="LANGUAGE CERT" /><span>LANGUAGE CERT</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="OIETC" /><span>OIETC</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="UNIVERSITY INTERNAL TEST" /><span>UNIVERSITY INTERNAL TEST</span></label>
+            <label class="check-item"><input type="checkbox" name="english" value="TOEFL" /><span>TOEFL</span></label>
+          </div>
+        </section>
+
+        <!-- SUPPORTING DOCUMENTS -->
+        <section class="form-section">
+          <div class="section-banner">SUPPORTING DOCUMENTS</div>
+          <div class="checkbox-grid cols-5">
+            <label class="check-item"><input type="checkbox" name="support" value="CV" /><span>CV</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="ACADEMIC REFERENCE LETTERS" /><span>ACADEMIC REFERENCE LETTERS</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="PROFESSIONAL RECOMMENDATION LETTERS" /><span>PROFESSIONAL RECOMMENDATION LETTERS</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="EXPERIENCE LETTERS" /><span>EXPERIENCE LETTERS</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="MEDICAL" /><span>MEDICAL</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="POLICE CHARACTER CERTIFICATE" /><span>POLICE CHARACTER CERTIFICATE</span></label>
+            <label class="check-item"><input type="checkbox" name="support" value="SOP" /><span>SOP</span></label>
+          </div>
+        </section>
+
+        <!-- ATTESTATION OF DOCUMENTS -->
+        <section class="form-section">
+          <div class="section-banner">ATTESTATION OF DOCUMENTS</div>
+          <div class="checkbox-grid cols-5">
+            <label class="check-item"><input type="checkbox" name="attestation" value="NOT REQUIRED" /><span>NOT REQUIRED</span></label>
+            <label class="check-item"><input type="checkbox" name="attestation" value="REQUIRED" /><span>REQUIRED</span></label>
+            <label class="check-item"><input type="checkbox" name="attestation" value="BOARD & IBCC" /><span>BOARD &amp; IBCC</span></label>
+            <label class="check-item"><input type="checkbox" name="attestation" value="HEC" /><span>HEC</span></label>
+            <label class="check-item"><input type="checkbox" name="attestation" value="MOFA" /><span>MOFA</span></label>
+            <label class="check-item"><input type="checkbox" name="attestation" value="SEALED ENVELOP" /><span>SEALED ENVELOP</span></label>
+          </div>
+        </section>
+
+        <!-- REMARKS -->
+        <section class="form-section remarks-section">
+          <div class="section-banner">REMARKS</div>
+          <textarea id="remarks" name="remarks" rows="5" placeholder="Enter any additional remarks here..."></textarea>
+        </section>
+
+        <!-- Footer -->
+        <footer class="form-footer">
+          <p>EDIFY GROUP UAN: +92 304 1111 444</p>
+          <div class="footer-social">
+            <span>info@edify.pk</span>
+          </div>
+        </footer>
+      </div>
+    </form>
+  </div>
+
+  <div id="whatsappModal" class="modal hidden">
+    <div class="modal-overlay" id="whatsappModalOverlay"></div>
+    <div class="modal-box">
+      <h3>Enter Client WhatsApp Number</h3>
+      <p class="modal-hint">Mobile number likhein, message is number par jayega</p>
+      <div class="phone-input-wrap">
+        <span class="phone-prefix">+92</span>
+        <input
+          type="tel"
+          id="whatsappPhone"
+          placeholder="300 1234567"
+          inputmode="numeric"
+          autocomplete="tel"
+        />
+      </div>
+      <p id="whatsappPhoneError" class="modal-error hidden"></p>
+      <div class="modal-actions">
+        <button type="button" id="btnWhatsAppCancel" class="btn btn-cancel">Cancel</button>
+        <button type="button" id="btnWhatsAppSend" class="btn btn-whatsapp">Send on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
